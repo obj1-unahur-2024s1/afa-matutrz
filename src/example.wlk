@@ -1,7 +1,6 @@
 object afa{
 	var arcas = 0
 	var precioLogistica = 10000000
-	var precioEntradas = 10000
 	
 	method pagarAlquiler(cancha){
 		arcas = arcas - cancha.precioDeAlquiler()
@@ -16,7 +15,7 @@ object afa{
 	}
 	
 	method venderEntradas(jugador, cancha){
-		arcas = arcas + (precioEntradas * (cancha.capacidadDeLaCancha() * jugador.popularidadActual()))
+		arcas = arcas + (entradas.precio() * (cancha.capacidadDeLaCancha() * jugador.popularidadActual()))
 		}
 	
 	method jugarPartido(jugador, cancha){
@@ -30,6 +29,19 @@ object afa{
 		return arcas
 	}
 	
+}
+
+object entradas {
+
+		var precio = 10000
+	
+	method precio(){
+		return precio
+	}
+	
+	method inflacionDePrecios(){
+		precio = precio + (precio * 0.10)
+	}
 }
 
 //jugadores
@@ -46,6 +58,10 @@ object messi{
 	method precioViaticos(){
 		return viaticos
 	}
+	
+	method opinarDePolitica(){
+		popularidad = popularidad - 0.1
+	}
 }
 
 object ronaldo{
@@ -59,17 +75,17 @@ object ronaldo{
 	method precioViaticos(){
 		return viaticos
 	}	
+	
+	method jugarEnLaAntartida(){
+		viaticos = viaticos + 2500000
+	}
 }
 
 object mbappe{
-	var popularidad = ((self.edadActual() * 2) + self.golesTotalesEnFinales()) * 0.01
-	var viaticos = 50000000
+	var viaticos = 40000000
 	var edad = 25
 	var golesEnFinal = 12
-	
-	method popularidadActual(){
-		return popularidad
-	}
+
 	
 	method edadActual(){
 		return edad
@@ -83,8 +99,29 @@ object mbappe{
 		return golesEnFinal
 	}
 	
+	method popularidadActual() {
+		return ((self.edadActual() * 2) + self.golesTotalesEnFinales()) * 0.01
+	}
+	
 	method precioViaticos(){
 		return viaticos
+	}
+}
+
+object dibu{
+	var popularidad = messi.popularidadActual() * 0.9
+	var viaticos = 30000000
+	
+	method popularidadActual(){
+		return popularidad
+	}
+	
+	method precioViaticos(){
+		return viaticos
+	}
+	
+	method publicidadConMostaza(){
+		popularidad = popularidad + 0.05
 	}
 }
 
@@ -104,4 +141,21 @@ object bombonera{
 		return capacidad
 	}
 	
+}
+
+object monumental{
+	var capacidad = 50000
+	var alquiler = 55000000
+	
+	method precioDeAlquiler(){
+		return alquiler
+	}
+	
+	method capacidadDeLaCancha(){
+		return capacidad
+	}
+	
+	method avanceDeObras(){
+		capacidad = capacidad + 2500
+	}
 }

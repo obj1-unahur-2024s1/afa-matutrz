@@ -1,6 +1,48 @@
+import example.*
 
-test "testX" {
 
-	assert.that(true)
+test "la afa festeja un partido en el monumental con messi, luego de que este opine públicamente sobre el gobierno
+	tras un aumento en la inflación, que afectó el precio de las entradas, y de por medio el monumental avanza sus obras.
+		la afa logra recaudar 393200000 del partido" {
+	
+	messi.opinarDePolitica()
+	entradas.inflacionDePrecios()
+	monumental.avanceDeObras()
+	afa.jugarPartido(messi, monumental)
+	assert.equals(393200000, afa.estadoDeLasArcas() )
 
 }
+
+test "la afa festeja un partido en la bombonera, para ello invitan a mbappe, el cual recientemente cumplió años.
+		la afa recauda 220000000 del partido" {
+			
+		mbappe.cumple()
+		mbappe.edadActual()
+		afa.jugarPartido(mbappe, bombonera)
+		assert.equals(220000000, afa.estadoDeLasArcas())
+		
+		}
+		
+test "la afa quiere invitar a ronaldo para jugar dos partidos, uno en la bombonera y el siguiente en el monumental.
+		ronaldo acepta, pero avisa que de por medio jugará la copa iceberg en la antártida, por lo que 
+ 		deberán costear un extra en los viáticos debido a ser el primer jugador que compita en el desierto helado. 
+		en ese tiempo messi opina de política y la popularidad de ronaldo también baja en consecuencia. 
+		la afa recauda 272500000 del partido. " {
+		
+		afa.jugarPartido(ronaldo, bombonera)
+		ronaldo.jugarEnLaAntartida()
+		afa.jugarPartido(ronaldo, monumental)
+		assert.equals(272500000, afa.estadoDeLasArcas())
+			
+		}
+		
+test "la afa quiere invitar al dibu a jugar dos partidos en el monumental, de por medio el dibu hace una publicidad
+		de la nueva hamburguesa de mostaza y el monumental avanza sus obras.
+		la ganancia de la afa es de 740300000 en total" {
+			
+		afa.jugarPartido(dibu, monumental)
+		dibu.publicidadConMostaza()
+		monumental.avanceDeObras()
+		afa.jugarPartido(dibu, monumental)
+		assert.equals(740300000, afa.estadoDeLasArcas())
+		}
